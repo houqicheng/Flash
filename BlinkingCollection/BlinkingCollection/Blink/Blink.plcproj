@@ -14,6 +14,12 @@
     <LibraryReferences>{cd6eda20-4d50-4b9c-8c46-4fe4dc31abea}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="FBs\FB_Blink.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\FB_Blinking.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="FBs\FB_Generator.TcPOU">
       <SubType>Code</SubType>
     </Compile>

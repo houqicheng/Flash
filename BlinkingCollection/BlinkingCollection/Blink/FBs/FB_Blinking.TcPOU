@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="FB_Blinking" Id="{877787ab-67ea-4a46-89ca-8d203a4a157c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Blinking
+VAR_INPUT
+	pVariable		:POINTER TO BOOL;		//Address of variable to blink
+	interval		:TIME;					//Blink interval
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	bState			:BOOL;
+	tonTimer		:TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[tonTimer(IN:=TRUE , PT:= interval);
+
+IF tonTimer.Q THEN 
+	bState := NOT bState;
+	tonTimer(IN:=FALSE, PT:= interval);
+END_IF
+
+pVariable^ := bState;
+ ]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Blinking">
+      <LineId Id="9" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="21" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
