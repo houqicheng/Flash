@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <Itf Name="IGenerator" Id="{2fbe3278-bc5d-4122-9eef-eb57cf51c55d}">
+    <Declaration><![CDATA[INTERFACE IGenerator
+]]></Declaration>
+    <Method Name="Flash" Id="{c7ebeb46-d650-40d0-b3ee-dc611a747ad4}">
+      <Declaration><![CDATA[METHOD Flash : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Property Name="P_tCycleTime" Id="{8be20884-2d84-4af2-99c4-ec9fd4841885}">
+      <Declaration><![CDATA[PROPERTY P_tCycleTime : Time]]></Declaration>
+      <Get Name="Get" Id="{180e54dd-a544-4a11-bf37-7e054aa0bbee}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{914010a1-c540-46a0-9f61-2e1a846e3d6d}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Property Name="P_Vendor" Id="{2ff79cf1-4fe2-47c0-a9db-bf46f5ba5790}">
+      <Declaration><![CDATA[PROPERTY P_Vendor : string]]></Declaration>
+      <Get Name="Get" Id="{c72fe078-5b97-4e6e-a8a5-03cef3c34f72}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+  </Itf>
+</TcPlcObject>

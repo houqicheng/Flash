@@ -18,6 +18,7 @@ _Boot/
 *.tpy
 *.tmcRefac
 *.tmc
+*.bak
 
 #TwinCAT compiled libraries
 *.compiled-library

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="FB_Generator" Id="{9e09a7b5-ff34-4256-969c-0d7828266939}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Generator IMPLEMENTS IGenerator
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	ton1		:TON;
+	tCycleTime		:TIME;
+	bBlink			:BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Flash" Id="{abc50991-7468-4d97-aff4-e20ac3d116d5}">
+      <Declaration><![CDATA[{warning 'add method implementation'}
+METHOD Flash : BOOL
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[ton1(IN:=NOT ton1.Q, PT:= tCycleTime, Q=> , ET=> );
+
+IF	ton1.Q THEN 
+	bBlink := NOT bBlink;
+END_IF
+
+Flash	:= bBlink;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="P_tCycleTime" Id="{e425694d-87cf-4ce8-8500-a30ad0ed0e54}">
+      <Declaration><![CDATA[{warning 'add property implementation'}
+PROPERTY P_tCycleTime : TIME
+]]></Declaration>
+      <Get Name="Get" Id="{5dd535b9-3bb1-4256-97ab-6ed36a6ea0c9}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_tCycleTime := tCycleTime;
+
+]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{6643e2ce-cb44-4158-aa48-fc2806f0bab8}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[tCycleTime := P_tCycleTime;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Property Name="P_Vendor" Id="{d36f3d71-11a1-4f50-b724-def219d7641f}">
+      <Declaration><![CDATA[{warning 'add property implementation'}
+PROPERTY P_Vendor : STRING
+]]></Declaration>
+      <Get Name="Get" Id="{df1d1215-3a27-472a-8d64-165c63b1d955}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[P_Vendor := 'Google';]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_Generator">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Generator.Flash">
+      <LineId Id="4" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Generator.P_tCycleTime.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Generator.P_tCycleTime.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Generator.P_Vendor.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
