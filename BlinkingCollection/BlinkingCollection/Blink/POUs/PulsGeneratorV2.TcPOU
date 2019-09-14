@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="PulsGeneratorV2" Id="{7cf7c897-fdce-4eb2-a763-9813ebcdc698}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PulsGeneratorV2
+VAR
+	timeCounter		:UDINT	:= 0;
+	RTC		:GETCPUACCOUNT;
+	tick50ms		:UDINT := 0;
+	timeCounter2s		:UDINT:=0;
+	tick2s				:UDINT:=1;
+	tn					:DWORD;
+	tx					:DWORD;
+	init				:BOOL;
+	
+	timePlcMs			:UDINT;
+	pulsChange			:BOOL:=FALSE;
+	pulseChange: BOOL;
+	//state: S_State;
+	//pulse: INT;
+	t100ms: BOOL;
+	t200ms: BOOL;
+	t250ms: BOOL;
+	t500ms: BOOL;
+	t750ms: BOOL;
+	t800ms: BOOL;
+	t1s: BOOL;
+	t2s: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+timePlcMs	:= TIME_TO_UDINT(TIME());
+
+(* reinit timeCounter if timePlcMs overflows *)
+IF ( timePlcMs < timeCounter )
+THEN
+	timeCounter := 50 - (4294967295 - timeCounter);
+END_IF
+
+IF (timePlcMs - timeCounter) >= 50 THEN
+	tick50ms := tick50ms + 1;
+	timeCounter:=timePlcMs;
+	pulseChange := TRUE;
+END_IF
+
+IF (pulseChange = TRUE)
+THEN
+	IF tick50ms MOD 2 = 0 THEN GVL_General.state.pulse.t100ms := NOT GVL_General.state.pulse.t100ms; END_IF
+	IF tick50ms MOD 4 = 0 THEN GVL_General.state.pulse.t200ms := NOT GVL_General.state.pulse.t200ms; END_IF
+	IF tick50ms MOD 5 = 0 THEN GVL_General.state.pulse.t250ms := NOT GVL_General.state.pulse.t250ms; END_IF
+	IF tick50ms MOD 10 = 0 THEN GVL_General.state.pulse.t500ms := NOT GVL_General.state.pulse.t500ms; END_IF
+	IF tick50ms MOD 15 = 0 THEN GVL_General.state.pulse.t750ms := NOT GVL_General.state.pulse.t750ms; END_IF
+	IF tick50ms MOD 16 = 0 THEN GVL_General.state.pulse.t800ms := NOT GVL_General.state.pulse.t800ms; END_IF
+	IF tick50ms MOD 20 = 0 THEN GVL_General.state.pulse.t1s := NOT GVL_General.state.pulse.t1s; END_IF
+	IF tick50ms MOD 40 = 0 THEN GVL_General.state.pulse.t2s := NOT GVL_General.state.pulse.t2s; END_IF
+
+	pulseChange := FALSE;
+
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="PulsGeneratorV2">
+      <LineId Id="19" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="59" Count="24" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

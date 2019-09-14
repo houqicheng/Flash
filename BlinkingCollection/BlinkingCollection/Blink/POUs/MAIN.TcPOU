@@ -52,9 +52,9 @@ fbBlink(msTime:= 300,sig=>bOutput2);
 
 
 	PulsGenerator();
-	outRedLed := GVL_General.PlusOutput.Puls1s;
+	outRedLed := GVL_General.PulseOutput.Pulse1s;
 
-
+	PulsGeneratorV2();
 
 
 

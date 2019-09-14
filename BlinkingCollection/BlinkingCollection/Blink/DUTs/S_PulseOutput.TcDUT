@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <DUT Name="S_PulseOutput" Id="{228eac90-c4b4-4687-9bfa-ac0d25810091}">
+    <Declaration><![CDATA[TYPE S_PulseOutput :
+STRUCT
+	Pulse100ms		:BOOL;
+	Pulse200ms		:BOOL;
+	Pulse500ms		:BOOL;
+	Pulse800ms		:BOOL;
+	Pulse1s			:BOOL;
+	Pulse2s			:BOOL;	
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

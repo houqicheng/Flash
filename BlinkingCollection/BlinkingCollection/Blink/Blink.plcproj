@@ -14,7 +14,13 @@
     <LibraryReferences>{cd6eda20-4d50-4b9c-8c46-4fe4dc31abea}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DUTs\S_PlusOutput.TcDUT">
+    <Compile Include="DUTs\S_PulseOutput.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\S_PulseOutputV2.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\S_State.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FBs\FB_Blink.TcPOU">
@@ -43,6 +49,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PulsGenerator.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PulsGeneratorV2.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

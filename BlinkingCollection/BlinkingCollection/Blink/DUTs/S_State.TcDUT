@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <DUT Name="S_State" Id="{00a19696-cec4-4d29-bf33-f597e5f42903}">
+    <Declaration><![CDATA[TYPE S_State :
+STRUCT
+	pulse			:S_PulseOutputV2;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

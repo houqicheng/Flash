@@ -3,7 +3,8 @@
   <GVL Name="GVL_General" Id="{9e2d1f25-3e4d-4883-885c-408b2d8ae1b0}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-	PlusOutput		:S_PlusOutput;
+	PulseOutput		:S_PulseOutput;
+	state			:S_State;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>
