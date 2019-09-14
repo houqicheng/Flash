@@ -21,6 +21,8 @@ VAR
 	poutGreenLed		:POINTER TO BOOL;
 	outGreenLed			AT %Q*:BOOL;	
 	//--------------------------------------------//
+	outRedLed			AT %Q*:BOOL;
+
 	
 	
 END_VAR
@@ -49,6 +51,9 @@ fbBlink(msTime:= 300,sig=>bOutput2);
 //------------------------------------------------------------//
 
 
+	PulsGenerator();
+	outRedLed := GVL_General.PlusOutput.Puls1s;
+
 
 
 
@@ -76,7 +81,9 @@ fbBlink(msTime:= 300,sig=>bOutput2);
       <LineId Id="62" Count="0" />
       <LineId Id="61" Count="0" />
       <LineId Id="60" Count="0" />
+      <LineId Id="87" Count="1" />
       <LineId Id="27" Count="0" />
+      <LineId Id="89" Count="0" />
       <LineId Id="26" Count="0" />
       <LineId Id="20" Count="3" />
       <LineId Id="19" Count="0" />

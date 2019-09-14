@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="PulsGenerator" Id="{09f64a5a-bb1b-444d-a8a2-59f66c7db939}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PulsGenerator
+VAR
+	fbBlinking,fbBlinking1,fbBlinking2,fbBlinking3,fbBlinking4,fbBlinking5		:FB_Blinking;
+	pPulsOutput			:POINTER TO S_PlusOutput;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pPulsOutput := ADR(GVL_General.PlusOutput);
+
+
+fbBlinking(pVariable:= ADR(pPulsOutput^.Puls100ms) , interval:= T#100MS);
+
+fbBlinking1(pVariable:= ADR(pPulsOutput^.Puls1s) , interval:= T#1S);
+
+fbBlinking2(pVariable:= ADR(pPulsOutput^.Puls200ms) , interval:= T#200MS);
+
+fbBlinking3(pVariable:= ADR(pPulsOutput^.Puls2s) , interval:= T#2S);
+
+fbBlinking4(pVariable:= ADR(pPulsOutput^.Puls500ms) , interval:= T#500MS);
+
+fbBlinking5(pVariable:= ADR(pPulsOutput^.Puls800ms) , interval:= T#800MS);  
+
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="PulsGenerator">
+      <LineId Id="24" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
