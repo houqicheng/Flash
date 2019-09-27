@@ -1,13 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.0.36">
-  <POU Name="MAIN" Id="{ccb61117-473d-422a-b215-ba03d30bcee5}">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="MAIN" Id="{ccb61117-473d-422a-b215-ba03d30bcee5}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	bFlag			:BOOL;
 END_VAR
-]]>
-    </Declaration>
+]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[GVL_General.myTimer.Delay(in:=T#5S);
+
+IF	GVL_General.myTimer.bDone THEN 
+	bFlag := TRUE;
+	
+	
+END_IF]]></ST>
     </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="2" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="6" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
   </POU>
 </TcPlcObject>

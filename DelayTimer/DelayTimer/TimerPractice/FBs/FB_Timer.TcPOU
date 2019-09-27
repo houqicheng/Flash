@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.16">
+  <POU Name="FB_Timer" Id="{13b1ed0b-45cb-4272-a876-12621c72ae5b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Timer
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+	bDone			:BOOL;
+	bBusy			:BOOL;
+END_VAR
+VAR
+	_stateDelay			:INT;
+	timerDelay			:TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Delay" Id="{134eed0e-cddb-4c30-bcbb-a8cb2bbaf357}">
+      <Declaration><![CDATA[METHOD Delay : BOOL
+VAR_INPUT
+	in			:TIME:=T#0S;	
+END_VAR
+VAR CONSTANT
+	StateDone			:INT:=30;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE _stateDelay OF
+	0:
+		bDone := FALSE;
+		timerDelay(IN:= FALSE);
+		_stateDelay	:= 20;
+	20:
+		timerDelay(IN:=TRUE , PT:=in);
+		IF timerDelay.Q THEN 
+			bDone := TRUE;
+			_stateDelay := StateDone;
+		END_IF
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{ef36a4a6-992e-4915-a31f-15de78a4d0af}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bDone := FALSE;
+
+timerDelay(IN:=FALSE);
+
+_stateDelay := 0;
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Timer">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Timer.Delay">
+      <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="12" Count="1" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="14" Count="3" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Timer.Reset">
+      <LineId Id="5" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
