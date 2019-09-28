@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4018.26">
+	<Project ProjectGUID="{6ECBEF10-D461-4C1D-A133-11EA77B8F508}" Target64Bit="true">
+		<System>
+			<Tasks>
+				<Task Id="2" Priority="20" CycleTime="100000" AmsPort="350">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{1ADC7021-7C87-4499-9550-1B329304CFDC}" Name="TimerPractice" PrjFilePath="TimerPractice\TimerPractice.plcproj" TmcFilePath="TimerPractice\TimerPractice.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
+				<Instance Id="#x01010010" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+					<Name>TimerPractice Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x01010011"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+	</Project>
+</TcSmProject>
